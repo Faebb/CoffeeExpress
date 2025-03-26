@@ -36,6 +36,6 @@ namespace CoffeeExpress.Models
         public int SalesCount { get; set; }
 
         //Relación uno-a-muchos con ShoppingCart
-        public ICollection<ShoppingCart> ShoppingCarts { get; set; }
+        //public ICollection<ShoppingCart>? ShoppingCarts { get; set; }
     }
 }

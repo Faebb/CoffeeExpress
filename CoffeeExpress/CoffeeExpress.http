@@ -4,3 +4,21 @@ GET {{CoffeeExpress_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{CoffeeExpress_HostAddress}}/api/coffees/
+Accept: application/json
+
+###
+
+POST {{CoffeeExpress_HostAddress}}/api/coffees/
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Name": "Café Latte",
+    "Type": "Latte",
+    "Price": 6000.00,
+    "Origin": "Colombia",
+    "Roast": "Medium",
+    "SalesCount": 0,
+    "Description": "Café con leche suave y cremoso."
+}
