@@ -9,9 +9,7 @@ namespace CoffeeExpress.Models
         public DbSet<Coffee> Coffees { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<ShoppingCart> ShoppingCarts
-        {
-            get; set;
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
