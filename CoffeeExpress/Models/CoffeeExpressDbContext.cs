@@ -7,7 +7,11 @@ namespace CoffeeExpress.Models
         public CoffeeEpxpressDBContext(DbContextOptions<CoffeeEpxpressDBContext> options) : base(options) { }
 
         public DbSet<Coffee> Coffees { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts
+        {
+            get; set;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
