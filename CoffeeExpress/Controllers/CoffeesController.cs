@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CoffeeExpress.Models;
 
-namespace CoffeeExpress.Controllers.Coffees
+namespace CoffeeExpress.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

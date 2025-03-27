@@ -168,7 +168,7 @@ namespace CoffeeExpress.Migrations
             modelBuilder.Entity("CoffeeExpress.Models.ShoppingCart", b =>
                 {
                     b.HasOne("CoffeeExpress.Models.Coffee", "Coffee")
-                        .WithMany("ShoppingCarts")
+                        .WithMany()
                         .HasForeignKey("IdCoffee")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -193,11 +193,6 @@ namespace CoffeeExpress.Migrations
                         .IsRequired();
 
                     b.Navigation("UserRole");
-                });
-
-            modelBuilder.Entity("CoffeeExpress.Models.Coffee", b =>
-                {
-                    b.Navigation("ShoppingCarts");
                 });
 
             modelBuilder.Entity("CoffeeExpress.Models.User", b =>

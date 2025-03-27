@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeExpress.Migrations
 {
     [DbContext(typeof(CoffeeEpxpressDBContext))]
-    [Migration("20250326205244_AddInitializedMigrate")]
+    [Migration("20250327211251_AddInitializedMigrate")]
     partial class AddInitializedMigrate
     {
         /// <inheritdoc />
@@ -171,7 +171,7 @@ namespace CoffeeExpress.Migrations
             modelBuilder.Entity("CoffeeExpress.Models.ShoppingCart", b =>
                 {
                     b.HasOne("CoffeeExpress.Models.Coffee", "Coffee")
-                        .WithMany("ShoppingCarts")
+                        .WithMany()
                         .HasForeignKey("IdCoffee")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -196,11 +196,6 @@ namespace CoffeeExpress.Migrations
                         .IsRequired();
 
                     b.Navigation("UserRole");
-                });
-
-            modelBuilder.Entity("CoffeeExpress.Models.Coffee", b =>
-                {
-                    b.Navigation("ShoppingCarts");
                 });
 
             modelBuilder.Entity("CoffeeExpress.Models.User", b =>

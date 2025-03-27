@@ -3,22 +3,77 @@
 GET {{CoffeeExpress_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+###TODOS
 GET {{CoffeeExpress_HostAddress}}/api/coffees/
 Accept: application/json
 
-###
+###UNO
+GET {{CoffeeExpress_HostAddress}}/api/coffees/2
+Accept: application/json
 
+###AGREGAR
 POST {{CoffeeExpress_HostAddress}}/api/coffees/
 Content-Type: application/json
 Accept: application/json
 
 {
-    "Name": "Café Latte",
-    "Type": "Latte",
-    "Price": 6000.00,
-    "Origin": "Colombia",
+    "Name": "Café Geisha",
+    "Description": "Un café de grano único y elegante con notas florales.",
+    "Type": "Grano",
+    "Price": 5500.00,
+    "Origin": "Panamá",
     "Roast": "Medium",
-    "SalesCount": 0,
-    "Description": "Café con leche suave y cremoso."
+    "SalesCount": 0
 }
+
+###ACTUALZIAR
+PUT {{CoffeeExpress_HostAddress}}/api/coffees/2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "IdCoffee": 2,
+    "Name": "Café Blue Mountainn",
+    "Description": "Molido perfecto para preparaciones intensas con toques afrutados.",
+    "Type": "Molido",
+    "Price": 7000.00,
+    "Origin": "Jamaica",
+    "Roast": "Dark",
+    "SalesCount": 0
+}
+
+###ELIMIMINAR
+DELETE {{CoffeeExpress_HostAddress}}/api/coffees/2
+Content-Type: application/json
+Accept: application/json
+
+
+###DATOS DE PRUEBA
+# {
+#     "Name": "Café Geisha",
+#     "Description": "Un café de grano único y elegante con notas florales.",
+#     "Type": "Grano",
+#     "Price": 5500.00,
+#     "Origin": "Panamá",
+#     "Roast": "Medium",
+#     "SalesCount": 0
+# }
+# {
+#     "Name": "Café Blue Mountain",
+#     "Description": "Molido perfecto para preparaciones intensas con toques afrutados.",
+#     "Type": "Molido",
+#     "Price": 7000.00,
+#     "Origin": "Jamaica",
+#     "Roast": "Dark",
+#     "SalesCount": 0
+# }
+# {
+#     "Name": "Café Lavazza Espresso",
+#     "Description": "Cápsulas con un sabor robusto y perfectamente equilibrado.",
+#     "Type": "Cápsula",
+#     "Price": 4500.00,
+#     "Origin": "Italia",
+#     "Roast": "Medium",
+#     "SalesCount": 0
+# }
+###
