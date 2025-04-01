@@ -47,6 +47,25 @@ DELETE {{CoffeeExpress_HostAddress}}/api/coffees/2
 Content-Type: application/json
 Accept: application/json
 
+###REGISTRO DE USUARIO
+POST {{CoffeeExpress_HostAddress}}/api/auth/register
+Content-Type: application/json
+Accept: application/json
+{
+    "Name": "Jhon Doe",
+    "Email": "email@example.com",
+    "Password": "TheStrokes123"
+}
+
+###LOGIN USUARIO
+POST {{CoffeeExpress_HostAddress}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+{
+    "Email": "email@example.com",
+    "Password": "TheStrokes123"
+}
+
 
 ###DATOS DE PRUEBA
 # {

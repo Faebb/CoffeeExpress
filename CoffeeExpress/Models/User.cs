@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoffeeExpress.Models
@@ -25,10 +26,13 @@ namespace CoffeeExpress.Models
         [Required]//Relación con UserRole
         public int IdUserRole { get; set; }
 
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        [Required]
+        public bool State { get; set; }
+        
         [ForeignKey("IdUserRole")] //Define la clave foránea
         public UserRole UserRole { get; set; }
-
-        //Relación uno-a-muchos con ShoppingCart
-        public ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

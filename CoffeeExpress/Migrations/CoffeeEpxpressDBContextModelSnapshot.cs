@@ -103,6 +103,9 @@ namespace CoffeeExpress.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUser"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -120,6 +123,9 @@ namespace CoffeeExpress.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.HasKey("IdUser");
 
