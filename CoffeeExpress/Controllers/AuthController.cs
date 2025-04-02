@@ -2,6 +2,7 @@
 using CoffeeExpress.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,13 +14,15 @@ namespace CoffeeExpress.Controllers
     public class AuthController : ControllerBase
     {
         private readonly CoffeeEpxpressDBContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(CoffeeEpxpressDBContext context)
+        public AuthController(IConfiguration configuration, CoffeeEpxpressDBContext context)
         {
+            _configuration = configuration;
             _context = context;
         }
         //registro de usuario
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterRequest registerRequest)
         {
             if (_context.Users.Any(u => u.Email == registerRequest.Email))
@@ -51,10 +54,16 @@ namespace CoffeeExpress.Controllers
         }
 
         //login usuario
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var user = _context.Users.FirstOrDefault(u => u.Email == loginRequest.Email);
+            
+            if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
+            {
+                return Unauthorized("Incorrect credentails.");
+            }
+
             var role = await _context.UserRoles.FindAsync(user.IdUserRole);
 
             if (role == null)
@@ -62,36 +71,32 @@ namespace CoffeeExpress.Controllers
                 return BadRequest("Invalid user.");
             }
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
-            {
-                return Unauthorized("Incorrect credentails.");
-            }
-
             user.UserRole = role;
 
-            var token = generateJwtToken(user);
+            var token = GenerateJwtToken(user);
             return Ok(new { Token = token, User = new { user.IdUser, user.Name, user.Email, user.UserRole.UserRoleName } });
-        } 
+        }
 
-        private string generateJwtToken(User user)
+        private string GenerateJwtToken(User user)
         {
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim("id", user.IdUser.ToString()),
-                new Claim("role", user.UserRole.UserRoleName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
-            
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("clave-muy-segura-para-el-token-123456"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            var claims = new[]
+            {
+            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+            new Claim("id", user.IdUser.ToString()),
+            new Claim("role", user.UserRole.UserRoleName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+
             var token = new JwtSecurityToken(
-                issuer: "CoffeeExpressAPI",
-                audience: "CoffeeExpressAPI",
-                claims = claims,
-                expires: DateTime.UtcNow.AddDays(3),
-                signingCredentials: creds);
+                issuer: _configuration["JwtSettings:ValidIssuer"],
+                audience: _configuration["JwtSettings:ValidAudience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(int.Parse(_configuration["JwtSettings:ExpireHours"])),
+                signingCredentials: creds
+            );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }

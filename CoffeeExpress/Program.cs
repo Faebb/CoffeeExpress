@@ -16,6 +16,7 @@ builder.Services.AddDbContext<CoffeeEpxpressDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeExpressConnection")));
 
 // Configuración de autenticación JWT
+var jwtSettings = builder.Configuration.GetSection("JwtSettings"); 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -25,9 +26,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "CoffeeExpressAPI",
-            ValidAudience = "CoffeeExpressAPI",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("webos-con-aceite"))
+            ValidIssuer = jwtSettings["ValidIssuer"],
+            ValidAudience = jwtSettings["ValidAudience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
         };
     });
 

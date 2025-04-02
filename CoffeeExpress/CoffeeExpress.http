@@ -52,8 +52,8 @@ POST {{CoffeeExpress_HostAddress}}/api/auth/register
 Content-Type: application/json
 Accept: application/json
 {
-    "Name": "Jhon Doe",
-    "Email": "email@example.com",
+    "Name": "Marie Doe",
+    "Email": "marie_doe@example.com",
     "Password": "TheStrokes123"
 }
 
@@ -62,7 +62,7 @@ POST {{CoffeeExpress_HostAddress}}/api/auth/login
 Content-Type: application/json
 Accept: application/json
 {
-    "Email": "email@example.com",
+    "Email": "marie_doe@example.com",
     "Password": "TheStrokes123"
 }
 
