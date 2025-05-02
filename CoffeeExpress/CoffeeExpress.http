@@ -15,16 +15,16 @@ Accept: application/json
 POST {{CoffeeExpress_HostAddress}}/api/coffees/
 Content-Type: application/json
 Accept: application/json
-
-{
-    "Name": "Café Geisha",
-    "Description": "Un café de grano único y elegante con notas florales.",
-    "Type": "Grano",
-    "Price": 5500.00,
-    "Origin": "Panamá",
-    "Roast": "Medium",
-    "SalesCount": 0
-}
+    {
+        "Name": "Café México",
+        "Description": "Molido perfecto para preparaciones intensas con toques afrutados, originario de México.",
+        "Type": "Cápsula",
+        "Price": 7000.00,
+        "Origin": "México",
+        "Roast": "Dark",
+        "SalesCount": 0,
+        "Url": "Images/cafe-mexico.webp"
+    }
 
 ###ACTUALZIAR
 PUT {{CoffeeExpress_HostAddress}}/api/coffees/2
@@ -43,7 +43,7 @@ Accept: application/json
 }
 
 ###ELIMIMINAR
-DELETE {{CoffeeExpress_HostAddress}}/api/coffees/2
+DELETE {{CoffeeExpress_HostAddress}}/api/coffees/7
 Content-Type: application/json
 Accept: application/json
 
@@ -69,30 +69,63 @@ Accept: application/json
 
 ###DATOS DE PRUEBA
 # {
-#     "Name": "Café Geisha",
-#     "Description": "Un café de grano único y elegante con notas florales.",
-#     "Type": "Grano",
-#     "Price": 5500.00,
-#     "Origin": "Panamá",
-#     "Roast": "Medium",
-#     "SalesCount": 0
-# }
-# {
-#     "Name": "Café Blue Mountain",
-#     "Description": "Molido perfecto para preparaciones intensas con toques afrutados.",
-#     "Type": "Molido",
-#     "Price": 7000.00,
-#     "Origin": "Jamaica",
-#     "Roast": "Dark",
-#     "SalesCount": 0
-# }
-# {
-#     "Name": "Café Lavazza Espresso",
-#     "Description": "Cápsulas con un sabor robusto y perfectamente equilibrado.",
+#     "Name": "Café Etiopía",
+#     "Description": "Un café de grano único y elegante con notas florales, originario de Etiopía.",
 #     "Type": "Cápsula",
-#     "Price": 4500.00,
-#     "Origin": "Italia",
+#     "Price": 5500.00,
+#     "Origin": "Etiopía",
 #     "Roast": "Medium",
-#     "SalesCount": 0
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-etiopia.webp"
+# },
+# {
+#     "Name": "Café Costa Rica",
+#     "Description": "Café de origen único con un sabor vibrante y notas cítricas.",
+#     "Type": "Cápsula",
+#     "Price": 6500.00,
+#     "Origin": "Costa Rica",
+#     "Roast": "Light",
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-costa-rica.webp"
+# },
+# {
+#     "Name": "Café Colombia",
+#     "Description": "Café de origen único con un sabor suave y balanceado.",
+#     "Type": "Cápsula",
+#     "Price": 5000.00,
+#     "Origin": "Colombia",
+#     "Roast": "Medium",
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-colombia.webp"
+# },
+# {
+#     "Name": "Café Bali Blue Moon",
+#     "Description": "Café de origen único con un sabor exótico y notas de chocolate.",
+#     "Type": "Cápsula",
+#     "Price": 6000.00,
+#     "Origin": "Indonesia",
+#     "Roast": "Dark",
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-bali-blue-moon.webp"
+# },
+# {
+#     "Name": "Café World Blend '63",
+#     "Description": "Una mezcla especial con un sabor único y equilibrado.",
+#     "Type": "Cápsula",
+#     "Price": 7000.00,
+#     "Origin": "México",
+#     "Roast": "Dark",
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-world-blend-63.webp"
+# },
+# {
+#     "Name": "Café México",
+#     "Description": "Molido perfecto para preparaciones intensas con toques afrutados, originario de México.",
+#     "Type": "Cápsula",
+#     "Price": 7000.00,
+#     "Origin": "México",
+#     "Roast": "Dark",
+#     "SalesCount": 0,
+#     "Url": "Images/cafe-mexico.webp"
 # }
 ###

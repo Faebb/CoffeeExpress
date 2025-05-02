@@ -35,6 +35,11 @@ namespace CoffeeExpress.Models
 
         public int SalesCount { get; set; }
 
+        [Required]
+        [MaxLength(255)] // Longitud máxima de caracteres para la URL
+        public string Url { get; set; } // Nueva propiedad para la URL
+
+
         //Relación uno-a-muchos con ShoppingCart
         //public ICollection<ShoppingCart>? ShoppingCarts { get; set; }
     }

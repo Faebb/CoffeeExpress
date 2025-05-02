@@ -4,6 +4,7 @@ using CoffeeExpress.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeExpress.Migrations
 {
     [DbContext(typeof(CoffeeEpxpressDBContext))]
-    partial class CoffeeEpxpressDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250501231731_AddUrlToCoffee")]
+    partial class AddUrlToCoffee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
